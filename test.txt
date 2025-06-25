@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patrick & Camille - Notre Mariage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-image: url('bac1.avif');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #442C2E;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin: 0;
+      color: #B76E79;
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+	
+	header img{
+      width:600px;
+	  height:400px;
+    }
+
+    nav {
+      background-color: rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 15px;
+	  
+    }
+
+    nav a {
+      margin: 0 30px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #B76E79;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #6e363e;
+    }
+
+    section {
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 40px auto;
+      max-width: 1000px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      color: #B76E79;
+    }
+
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .photos img {
+      width: 250px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      object-fit: cover;
+    }
+
+    .button {
+      background: #B76E79;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #6e363e;
+    }
+.temoignages {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 0px;
+}
+
+.temoignage {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#temoignages h2{
+      text-align: center;
+}
+
+#temoignages {
+	background-color: rgba(255,255,255,0.8);
+	height:300px;
+}
+
+
+.temoignage:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.temoignage img {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.temoignage p {
+  flex: 1;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+#rsvp-fixed {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #B76E79;
+  color: white;
+  padding: 15px;
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 1000;
+  font-size: 14px;
+  text-align: center;
+}
+
+#rsvp-fixed p {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+.rsvp-btn {
+  display: inline-block;
+  background-color: white;
+  color: #B76E79;
+  padding: 8px 12px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.rsvp-btn:hover {
+  background-color: #f3d7dc;
+  color: #6e363e;
+}
+
+@media screen and (max-width: 768px) {
+  #rsvp-fixed {
+    display: none;
+  }
+}
+
+#video {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.88);
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+#video h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  color: #B76E79;
+  margin-bottom: 20px;
+}
+
+.img{
+  display:flex;
+}
+
+.img1{
+  width:50%;
+  
+}
+.img2{
+  width:50%;
+
+}
+
+  </style>
+</head>
+<body>
+	<div id="rsvp-fixed">
+    <p>Merci de confirmer ta présence<br>avant le 26 juin 2025.</p>
+    <a href="mailto:couplekipre@gmail.com?subject=RSVP Mariage&body=Bonjour,%20je%20confirme%20ma%20présence%20au%20mariage%20de%20Stéphanie%20et%20Cédric." class="rsvp-btn">RSVP</a>
+	</div>
+
+
+	<nav>
+    <a href="#histoire">Notre Histoire</a>
+    <a href="#photos">Photos</a>
+    <a href="#jour">Le Grand Jour</a>
+    <a href="#faq">FAQ</a>
+    <a href="#rsvp">RSVP</a>
+  </nav>
+  <header>
+	<div id="countdown"></div>
+    <h1>Camille & Patrick</h1>
+	<p><strong>Cérémonie :</strong> 26 juillet 2025, 12h30 - Église Vase d'Honneur, 3095 Wilfrid-Hamel, Québec</p>
+    <p>Un amour conduit par Dieu 🌸</p>
+  </header>
+<div class="img">
+<div class="img1">
+<img src="mar1.jpg" alt="Rencontre" width="100%" height="700px" >
+    </div>
+<div class="img2">
+<section id="temoignages">
+  <h2>Notre histoire d'amour</h2>
+  <div class="temoignages">
+    <div class="temoignage">
+	<img src="mar1.jpg" alt="Rencontre">
+      <p>
+        <strong>Une Rencontre Orchestrée par le Seigneur St Esprit :</strong><br>
+        Tout a commencé lors d’une veillée des serviteurs à l’Église Vase d’Honneur – Centre Expression d’Amour, où Stéphanie et moi avions le privilège de servir le Seigneur...
+      </p>
+    </div>
+    <div class="temoignage">
+	<img src="mar1.jpg" alt="Rencontre">
+      <p>
+        <strong>Un simple Bonjour :</strong><br>
+        À la fin d’un culte dominical, nos chemins se croisèrent à nouveau. Un « Bonjour » accompagné d’un sourire céleste a tout changé...
+      </p>
+    </div>
+    <div class="temoignage">
+	<img src="mar1.jpg" alt="Rencontre">
+      <p>
+        <strong>Un Cheminement Inspiré :</strong><br>
+        Guidés par l’Esprit, avec le soutien du Pasteur Lorenzo et la Pasteure Sarah Cavallaro, nous avons cheminé ensemble vers un amour bâti sur Dieu...
+      </p>
+    </div>
+    <div class="temoignage">
+	<img src="mar1.jpg" alt="Rencontre">
+      <p>
+        <strong>L’Accomplissement d’une Promesse Divine :</strong><br>
+        Aujourd’hui, nous sommes convaincus que notre union est l’accomplissement d’un plan divin établi depuis toujours. Ce que Dieu commence, Il l’achève...
+      </p>
+    </div>
+  </div>
+</section>
+    </div>
+    </div>
+
+
+
+  <section id="video">
+  <h2>Notre Vidéo</h2>
+  <video controls width="100%" style="max-width: 800px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+    <source src="video.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture vidéo.
+  </video>
+</section>
+
+
+  <section id="jour">
+    <h2>Le Grand Jour</h2>
+    <p><strong>Cérémonie :</strong> 26 juillet 2025, 12h30 - Église Vase d'Honneur, 3095 Wilfrid-Hamel, Québec</p>
+    <p><strong>Réception :</strong> 26 juillet, 16h30 - Hôtel Universel, 2300 Ch Ste-Foy</p>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <ul>
+      <li><strong>Confirmation :</strong> Avant le 26 juin 2025</li>
+      <li><strong>Enfants :</strong> Bienvenus à la cérémonie, pas à la réception</li>
+      <li><strong>Cadeaux :</strong> Virement à couplekipre@gmail.com (mot de passe : rehoboth)</li>
+      <li><strong>Tenue :</strong> Chic, en orange brûlé / blanc / marron</li>
+    </ul>
+  </section>
+
+  <section id="rsvp">
+    <h2>RSVP</h2>
+    <p>Merci de confirmer ta présence avant le 26 juin 2025.</p>
+    <a href="mailto:couplekipre@gmail.com?subject=RSVP Mariage&body=Bonjour,%20je%20confirme%20ma%20présence%20au%20mariage%20de%20Stéphanie%20et%20Cédric." class="button">Confirmer par email</a>
+  </section>
+
+  <footer>
+    © 2025 Camille & Patrick — Avec amour & foi 💒
+  </footer>
+    <script src="script.js"></script>
+
+
+</body>
+</html>

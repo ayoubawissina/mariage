@@ -1,0 +1,765 @@
+     body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-image: url('bac1.avif');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #442C2E;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-align: center;
+      padding: 40px 20px;
+	  margin-top:30px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin: 0;
+      color: #B76E79;
+    }
+
+    header p {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+	
+	header img{
+      width:600px;
+	  height:400px;
+    }
+
+    nav {
+      background-color: rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 15px;
+	  
+    }
+
+    nav a {
+      margin: 0 30px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #800000;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #6e363e;
+    }
+
+    section {
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 40px auto;
+      max-width: 1000px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+	  text-align:center;
+	  
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      color: #800000;
+    }
+
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .photos img {
+      width: 250px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      object-fit: cover;
+    }
+
+    .button {
+      background: #B76E79;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: #800000;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: white;
+    }
+.temoignages {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 0px;
+}
+
+.temoignage {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#temoignages h2{
+      text-align: center;
+}
+
+#temoignages {
+	background-color: rgba(255,255,255,0.7);
+
+}
+
+
+.temoignage:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.temoignage img {
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.temoignage p {
+  flex: 1;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+#rsvp-fixed {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #800000;
+  color: white;
+  padding: 15px;
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 1000;
+  font-size: 14px;
+  text-align: center;
+}
+
+#rsvp-fixed p {
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+.rsvp-btn {
+  display: inline-block;
+  background-color: white;
+  color: #800000;
+  padding: 8px 12px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.rsvp-btn:hover {
+  background-color: #f3d7dc;
+  color: #6e363e;
+}
+
+@media screen and (max-width: 768px) {
+  #rsvp-fixed {
+    display: none;
+  }
+}
+
+#video {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+#video h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  color: #800000;
+  margin-bottom: 20px;
+}
+
+.img {
+  display: flex;
+  align-items: stretch; /* ✅ permet aux colonnes d’avoir même hauteur */
+  gap: 20px;
+  height: auto;
+  min-height: 100%; /* Utile si l'un des deux est plus court */
+}
+
+.img1,
+.img2 {
+  width: 50%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.img1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.test {
+  width: 100%;
+  height: 93%;           /* ✅ remplissage vertical complet */
+  object-fit: cover;      /* ✅ zoom et coupe sans déformation */
+  border-radius: 10px;
+  margin-top: 0;          /* ❌ Enlève le margin-top de 45px */
+}
+
+
+
+
+#countdown {
+  position: absolute;
+  top: 20px;
+  left: 20px; /* ⬅️ On le place à gauche */
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  color: #800000;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+#image-info {
+  background-color: rgba(255, 255, 255, 0.2);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1000px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  flex-wrap: wrap;
+}
+
+/* Section info centrale */
+.info-overlay {
+  position: relative;
+  z-index: 2;
+  background-color: #800000;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 15px;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0 20px;
+  flex: 1 1 250px;
+}
+
+/* Section cadeau à gauche */
+.gift-section {
+  flex: 1 1 250px;
+  text-align: left;
+  padding: 20px;
+  z-index: 1;
+
+}
+
+.gift-section a {
+  color: #800000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.gift-section a:hover {
+  text-decoration: underline;
+}
+
+/* Section photo à droite */
+.photo-maries {
+  flex: 1 1 250px;
+  text-align: right;
+  padding: 20px;
+  z-index: 1;
+}
+
+.photo-maries img {
+  width: 120px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.label-email {
+  display: inline;
+  font-weight: bold;
+  color: #442C2E;
+}
+
+.email-highlight {
+  display: inline;
+  color: #b22222;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-family: 'Open Sans', sans-serif;
+  word-break: break-word; /* Pour éviter un débordement */
+}
+
+.white-bg-link {
+  background-color: white;
+  color: #800000;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+
+
+#faq {
+
+  border-radius: 12px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 1000px;
+}
+
+#faq h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2em;
+  color: #800000;
+  margin-bottom: 5x;
+}
+
+#faq ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#faq li {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-left: 5px solid #B76E79;
+  border-left: 5px solid #B76E79;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.05em;
+  line-height: 1.2;
+  transition: transform 0.2s;
+}
+
+
+#faq li strong {
+  color: #800000;
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 0px;
+}
+
+
+.btn-retour {
+  display: inline-block;
+  margin-top: 10px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+  border: 2px solid #800000;
+}
+
+
+/* ✅ RESPONSIVE DESIGN POUR TABLETTES ET PETITS ÉCRANS */
+@media screen and (max-width: 991px) {
+  .img {
+    flex-direction: column;
+  }
+
+  .img1, .img2 {
+    width: 100%;
+  }
+
+  .temoignage {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .temoignage:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .temoignage img {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  header h1 {
+    font-size: 2.2em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  nav a {
+    margin: 10px 10px;
+  }
+
+  .rsvp-btn {
+    font-size: 0.9em;
+    padding: 6px 10px;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  #image-info .info-overlay {
+    font-size: 1.2em;
+    padding: 8px 16px;
+  }
+
+  #faq li {
+    font-size: 1em;
+  }
+
+  .button {
+    font-size: 0.95em;
+    padding: 8px 16px;
+  }
+
+  footer {
+    font-size: 0.8em;
+    padding: 15px;
+  }
+
+  .btn-retour {
+    font-size: 0.9em;
+    padding: 8px 14px;
+  }
+}
+
+/* ✅ TRÈS PETITS ÉCRANS (téléphones) */
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  header p {
+    font-size: 0.95em;
+  }
+
+  #image-info .info-overlay {
+    font-size: 1em;
+    padding: 6px 10px;
+  }
+
+  .test {
+    margin-top: 20px;
+  }
+
+  #video video {
+    width: 100%;
+    height: auto;
+  }
+
+  #countdown {
+    font-size: 1em;
+    padding: 6px 10px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .temoignage p {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  #faq li {
+    font-size: 0.95em;
+  }
+}
+
+
+/* 🔥 Menu hamburger (bouton) */
+.hamburger {
+  display: none;
+  font-size: 2em;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #800000;
+  z-index: 2000;
+  cursor: pointer;
+  
+}
+
+/* 🔥 Pop-up navigation */
+.popup-nav {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 60vh;
+  background-color: rgba(255,255,255,0.65);
+  z-index: 1999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  font-size: 1.5em;
+  padding: 40px 20px;
+}
+
+.popup-nav a {
+  text-decoration: none;
+  color: #800000;
+  font-weight: bold;
+}
+
+.popup-nav .close-btn {
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #800000;
+}
+
+/* ✅ Affichage sur mobile uniquement */
+@media screen and (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+
+
+/* Pop-up RSVP style mariage romantique */
+
+.popup-rsvp {
+  /* Remplacer height: 100% par 80vh */
+  height: 80vh;
+
+  /* Garder la largeur à 100% ou 100vw */
+  width: 100vw;
+
+  /* Garder le fond sombre transparent */
+
+  /* Toujours centrer le contenu */
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  /* Garde le positionnement fixe et le z-index */
+  position: fixed;
+  top: 10vh; /* pour centrer verticalement avec 80vh de hauteur */
+  left: 0;
+
+  z-index: 3000;
+  animation: fadeIn 0.3s ease forwards;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.popup-rsvp .popup-content {
+    position: relative;  /* <-- AJOUTER CETTE LIGNE */
+
+  background: #fff8f0; /* Crème très clair */
+  padding: 30px 40px 40px 40px;
+  border-radius: 20px;
+  width: 95%;
+  max-width: 450px;
+  box-shadow: 0 15px 40px rgba(128, 0, 0, 0.4);
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #6e2c2c; /* Bordeaux sombre */
+  /* Ajuster la popup-content pour un centrage parfait */
+  max-height: 100%; /* pour ne pas dépasser la hauteur du conteneur */
+  overflow-y: auto; /* si contenu plus grand que la popup, scroll vertical */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+.popup-rsvp h2 {
+  font-size: 2.4em;
+  margin-bottom: 5px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #800000;
+}
+
+.rsvp-welcome {
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 25px;
+  font-size: 1.1em;
+  color: #9a4d4d;
+}
+
+.popup-rsvp form input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 13px;
+  border: 2px solid #d9b3b3;
+  border-radius: 15px;
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+  color: #5a2a2a;
+  transition: border-color 0.3s ease;
+}
+
+.popup-rsvp form input:focus {
+  border-color: #800000;
+  outline: none;
+  background-color: #fff0f0;
+}
+
+.popup-rsvp form button {
+  background-color: #800000;
+  color: #fff8f0;
+  padding: 14px 0;
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-rsvp form button:hover {
+  background-color: #a02222;
+}
+
+.confirmation-msg {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 1.15em;
+  color: #2d662d;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8em;
+  font-weight: 700;
+  cursor: pointer;
+  color: #800000;
+  transition: color 0.3s ease;
+}
+
+.close-popup:hover {
+  color: #a02222;
+}
+
+.rsvp-testimonials {
+  margin-top: 25px;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  color: #7a3a3a;
+  font-size: 0.95em;
+  line-height: 1.3em;
+}
+
+.rsvp-testimonials blockquote {
+  margin: 10px auto;
+  border-left: 4px solid #800000;
+  padding-left: 12px;
+  font-style: italic;
+  color: #6e2c2c;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .popup-rsvp .popup-content {
+    padding: 25px 20px 30px 20px;
+  }
+  
+  .popup-rsvp h2 {
+    font-size: 2em;
+  }
+}
+@media (max-width: 480px) {
+  /* Réduction de la taille de la popup pour mieux s'adapter aux petits écrans */
+  .popup-rsvp {
+    padding: 10px;
+    height: 90vh; /* un peu plus grand sur petits écrans */
+  }
+
+  .popup-rsvp .popup-content {
+    width: 90%;       /* largeur un peu plus large sur mobile */
+    max-width: none;  /* désactive la limite max pour prendre plus d'espace */
+    padding: 20px 15px 25px 15px;
+    font-size: 0.9em; /* texte un peu plus petit */
+  }
+
+  .popup-rsvp h2 {
+    font-size: 1.8em; /* titre un peu plus petit */
+  }
+
+  .popup-rsvp form input,
+  .popup-rsvp form button {
+    font-size: 1em;  /* tailles adaptées pour toucher facilement */
+  }
+
+  .rsvp-testimonials {
+    font-size: 0.85em;
+    line-height: 1.2em;
+  }
+
+  .close-popup {
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+  }
+}

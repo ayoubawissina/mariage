@@ -35,6 +35,8 @@ $validationLink = "$siteURL/valider_invite.php?token=$token&nom=" . urlencode($n
 
 // Envoyer un mail au marié
 $mail = new PHPMailer(true);
+$mail->CharSet = 'UTF-8';
+
 try {
   $mail->isSMTP();
   $mail->Host       = 'smtp.gmail.com'; // ou autre serveur SMTP
@@ -48,7 +50,7 @@ try {
   $mail->addAddress('patrick.mc1925@gmail.com'); // Email du marié
 
   $mail->isHTML(true);
-  $mail->Subject = '🎉 Nouvelle confirmation de présence';
+  $mail->Subject = 'Nouvelle confirmation de présence';
   $mail->Body    = "
     <h2>Nouveau RSVP</h2>
     <p><strong>$prenom $nom</strong> a confirmé sa présence au mariage.</p>

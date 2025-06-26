@@ -43,6 +43,8 @@ file_put_contents($file, json_encode($invites, JSON_PRETTY_PRINT));
 
 // Envoyer le mail
 $mail = new PHPMailer(true);
+$mail->CharSet = 'UTF-8';
+
 try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
@@ -55,8 +57,17 @@ try {
     $mail->setFrom('patrick.mc1925@gmail.com', 'Camille & Patrick');
     $mail->addAddress($email);
     $mail->isHTML(true);
-    $mail->Subject = '🎉 Votre présence a été confirmée !';
-    $mail->Body = "<p>Merci $prenom pour ta confirmation. Ta présence est désormais officiellement validée pour notre mariage ! 💒</p>";
+    $mail->Subject = 'Votre présence a été confirmée !';
+	$mail->Body = "
+  <div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+    <p>Bonjour <strong>$prenom</strong>,</p>
+    <p>Merci pour votre réponse !<br>
+    Votre présence à notre mariage est désormais <strong>confirmée</strong>.</p>
+    <p>Nous avons hâte de vous retrouver le <strong>13 septembre</strong> pour célébrer ensemble ce moment unique.</p>
+    <p>À très bientôt !<br>
+    <strong>Camille & Patrick</strong></p>
+  </div>
+";
 
     $mail->send();
 

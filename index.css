@@ -40,7 +40,6 @@
   text-align: center;
   padding: 15px;
   z-index: 1000; /* pour qu'il passe devant les autres éléments */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optionnel : ombre discrète */
 }
 
 

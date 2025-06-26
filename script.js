@@ -1,7 +1,7 @@
 
 // Compte à rebours jusqu'au mariage
 const countdown = document.getElementById("countdown");
-const dateMariage = new Date("2025-09-14T15:00:00").getTime();
+const dateMariage = new Date("2025-09-19T15:00:00").getTime();
 
 const timer = setInterval(() => {
   const now = new Date().getTime();

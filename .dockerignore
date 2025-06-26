@@ -6,4 +6,3 @@ node_modules
 
 # ⚠️ NE PAS ignorer composer.json ni composer.lock
 # vendor est ignoré car il sera généré automatiquement sur Render
-vendor/

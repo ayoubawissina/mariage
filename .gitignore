@@ -3,9 +3,8 @@
 
 # Fichiers temporaires ou sensibles
 *.log
-*.env
+.env
 .env.local
-*.lock
 
 # Fichiers système
 .DS_Store

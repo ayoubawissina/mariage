@@ -182,8 +182,21 @@
 
 @media screen and (max-width: 768px) {
   #rsvp-fixed {
-    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    top: auto;
+    transform: none;
+    width: auto;
+    padding: 5px 5px;
+    font-size: 10px;
+    border-radius: 30px;
+    background-color: #800000;
+    z-index: 999;
   }
+
+  
+
 }
 
 #video {
@@ -608,7 +621,6 @@
 
 .popup-rsvp .popup-content {
     position: relative;  /* <-- AJOUTER CETTE LIGNE */
-
   background: #fff8f0; /* Crème très clair */
   padding: 30px 40px 40px 40px;
   border-radius: 20px;

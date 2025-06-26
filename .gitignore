@@ -1,0 +1,21 @@
+# Ignorer les dossiers de dépendances
+/vendor/
+
+# Fichiers temporaires ou sensibles
+*.log
+*.env
+.env.local
+*.lock
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Cache IDE / éditeurs
+.vscode/
+.idea/
+
+# Ignorer les fichiers vidéos lourds (facultatif)
+*.mp4
+*.mov
+*.avi

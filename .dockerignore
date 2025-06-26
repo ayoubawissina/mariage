@@ -1,8 +1,18 @@
-# Ignore les fichiers inutiles
+# Fichiers Git
 .git
 .gitignore
+
+# Dépendances JS (si jamais utilisées)
 node_modules
+
+# Logs
 *.log
 
-# ⚠️ NE PAS ignorer composer.json ni composer.lock
-# vendor est ignoré car il sera généré automatiquement sur Render
+# Fichiers système ou éditeurs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ⚠️ Ne PAS ignorer vendor/ si tu veux qu’il soit copié dans le conteneur
+# Ne PAS ignorer composer.json ni composer.lock

@@ -14,7 +14,7 @@ COPY . /var/www/html/
 WORKDIR /var/www/html/
 
 # Étape 6 : Installe les dépendances s'il y a un fichier composer.json
-RUN if [ -f composer.json ]; then composer install; fi
+RUN if [ -f composer.json ]; then composer install --no-interaction --no-ansi --verbose; fi
 
 # Étape 7 : Expose le port Apache
 EXPOSE 80

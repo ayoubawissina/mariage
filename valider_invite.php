@@ -1,4 +1,14 @@
 <?php
+
+
+
+// Inclure PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php'; // Chemin vers le dossier où se trouve PHPMailer (via Composer)
+
+
 $nom = $_GET['nom'] ?? '';
 $prenom = $_GET['prenom'] ?? '';
 $email = $_GET['email'] ?? '';
@@ -24,9 +34,7 @@ $stmt = $conn->prepare("INSERT INTO invites (nom_invite, prenom, courriel) VALUE
 $stmt->bind_param("sss", $nom, $prenom, $email);
 $stmt->execute();
 
-// Envoyer mail à l’invité
-use PHPMailer\PHPMailer\PHPMailer;
-require 'vendor/autoload.php';
+
 
 $mail = new PHPMailer();
 $mail->isSMTP();

@@ -1,5 +1,9 @@
+# Ignore les fichiers inutiles
 .git
 .gitignore
 node_modules
-vendor
 *.log
+
+# ⚠️ NE PAS ignorer composer.json ni composer.lock
+# vendor est ignoré car il sera généré automatiquement sur Render
+vendor/

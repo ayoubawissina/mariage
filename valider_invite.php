@@ -63,7 +63,7 @@ try {
     <p>Bonjour <strong>$prenom</strong>,</p>
     <p>Merci pour votre réponse !<br>
     Votre présence à notre mariage est désormais <strong>confirmée</strong>.</p>
-    <p>Nous avons hâte de vous retrouver le <strong>13 septembre</strong> pour célébrer ensemble ce moment unique.</p>
+    <p>Nous avons hâte de vous retrouver le <strong>19 septembre</strong> pour célébrer ensemble ce moment unique.</p>
     <p>À très bientôt !<br>
     <strong>Camille & Patrick</strong></p>
   </div>

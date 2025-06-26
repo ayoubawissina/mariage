@@ -33,11 +33,16 @@
     }
 
     nav {
-      background-color: rgba(255,255,255,0.1);
-      text-align: center;
-      padding: 15px;
-	  
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  z-index: 1000; /* pour qu'il passe devant les autres éléments */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optionnel : ombre discrète */
+}
+
 
     nav a {
       margin: 0 30px;
@@ -52,7 +57,7 @@
     }
 
     section {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.5);
       margin: 40px auto;
       max-width: 1000px;
       padding: 30px;
@@ -121,7 +126,7 @@
 }
 
 #temoignages {
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(255,255,255,0.8);
 
 }
 

@@ -30,7 +30,8 @@ if (empty($nom) || empty($prenom) || empty($email)) {
 
 // Créer un lien de validation
 $token = bin2hex(random_bytes(16));
-$validationLink = "http://localhost/valider_invite.php?token=$token&nom=" . urlencode($nom) . "&prenom=" . urlencode($prenom) . "&email=" . urlencode($email);
+$siteURL = "https://mariage-8wp3.onrender.com"; // ← Ton vrai domaine
+$validationLink = "$siteURL/valider_invite.php?token=$token&nom=" . urlencode($nom) . "&prenom=" . urlencode($prenom) . "&email=" . urlencode($email);
 
 // Envoyer un mail au marié
 $mail = new PHPMailer(true);

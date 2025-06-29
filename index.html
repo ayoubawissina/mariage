@@ -85,6 +85,14 @@
 </section>
 
 
+
+  <section id="jour">
+    <h2>Le Grand Jour</h2>
+    <p><strong>Cérémonie :</strong> 26 juillet 2025, 12h30 - Église Vase d'Honneur, 3095 Wilfrid-Hamel, Québec</p>
+    <p><strong>Réception :</strong> 26 juillet, 16h30 - Hôtel Universel, 2300 Ch Ste-Foy</p>
+  </section>
+
+
   <section id="cadeau">
       <h2>Cadeau</h2>
 
@@ -104,19 +112,11 @@
 </strong></p>
   </div>
 
-  <div class="photo-maries">
-    <img src="pat1.jpg" alt="Les mariés">
-  </div>
 </div>
   </section>
 
 
 
-  <section id="jour">
-    <h2>Le Grand Jour</h2>
-    <p><strong>Cérémonie :</strong> 26 juillet 2025, 12h30 - Église Vase d'Honneur, 3095 Wilfrid-Hamel, Québec</p>
-    <p><strong>Réception :</strong> 26 juillet, 16h30 - Hôtel Universel, 2300 Ch Ste-Foy</p>
-  </section>
 
   <section id="faq">
     <h2>FAQ</h2>
@@ -184,23 +184,30 @@
     <script src="script.js"></script>
 <script>
   const hamburger = document.getElementById('hamburger');
-  const popupNav = document.getElementById('popupNav');
-  const closeNav = document.getElementById('closeNav');
+const popupNav = document.getElementById('popupNav');
+const closeNav = document.getElementById('closeNav');
 
-  hamburger.addEventListener('click', () => {
-    popupNav.style.display = 'flex';
-  });
+hamburger.addEventListener('click', () => {
+  popupNav.style.display = 'flex';
+  hamburger.style.display = 'none';      // Cache le bouton hamburger
+  closeNav.style.display = 'block';      // Affiche le bouton ✖
+});
 
-  closeNav.addEventListener('click', () => {
+closeNav.addEventListener('click', () => {
+  popupNav.style.display = 'none';
+  hamburger.style.display = 'block';     // Réaffiche le bouton hamburger
+  closeNav.style.display = 'none';       // Cache le bouton ✖
+});
+
+// Fermer le menu si on clique sur un lien
+document.querySelectorAll('.popup-nav a').forEach(link => {
+  link.addEventListener('click', () => {
     popupNav.style.display = 'none';
+    hamburger.style.display = 'block';
+    closeNav.style.display = 'none';
   });
+});
 
-  // Optionnel : Fermer le menu si on clique sur un lien
-  document.querySelectorAll('.popup-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      popupNav.style.display = 'none';
-    });
-  });
 </script>
 
 <script>

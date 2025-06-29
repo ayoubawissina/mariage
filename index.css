@@ -575,11 +575,13 @@
 .popup-nav .close-btn {
   position: absolute;
   top: 15px;
-  left: 0px;
+  right: 0px;
   font-size: 1.5em;
   cursor: pointer;
   color: #800000;
+  display: none; /* 👈 Cacher par défaut */
 }
+
 
 /* ✅ Affichage sur mobile uniquement */
 @media screen and (max-width: 768px) {

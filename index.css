@@ -424,7 +424,12 @@
   .img1, .img2 {
     width: 100%;
   }
-
+  
+  
+  .img_ecran{
+    Display:none;
+  }
+	
   .temoignage {
     flex-direction: column;
     text-align: center;

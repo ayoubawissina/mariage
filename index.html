@@ -10,6 +10,9 @@
  
 </head>
 <body>
+	<!-- Bouton Retour en haut -->
+	<a href="#top" id="scrollToTop" title="Retour en haut">⬆️</a>
+
 	<body id="top">
 	<div id="rsvp-fixed">
     <p>Merci de confirmer ta présence<br>avant le 26 juin 2025.</p>
@@ -246,6 +249,19 @@ rsvpForm.addEventListener('submit', (e) => {
 });
 
 </script>
+
+<script>
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.style.display = 'block';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  });
+</script>
+
 
 </body>
 </html>

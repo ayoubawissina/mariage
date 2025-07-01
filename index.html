@@ -256,6 +256,12 @@ closeRSVP.addEventListener('click', () => {
 
 rsvpForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  
+  // Vérifie si le formulaire est valide
+  if (!rsvpForm.checkValidity()) {
+    rsvpForm.reportValidity(); // Affiche les messages d'erreur du navigateur
+    return;
+  }
 
   const formData = new FormData(rsvpForm);
 

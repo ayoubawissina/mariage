@@ -7,6 +7,9 @@ require 'vendor/autoload.php';
 $nom = $_GET['nom'] ?? '';
 $prenom = $_GET['prenom'] ?? '';
 $email = $_GET['email'] ?? '';
+$invitationCouple = $_GET['invitationCouple'] ?? '';
+$presenceConjoint = $_GET['presenceConjoint'] ?? '';
+$confirmationConjoint = $_GET['confirmationConjoint'] ?? '';
 
 if (!$nom || !$prenom || !$email) {
     die('Informations manquantes.');
@@ -35,6 +38,9 @@ $invites[] = [
     'nom' => $nom,
     'prenom' => $prenom,
     'email' => $email,
+	'invitationCouple' => $invitationCouple,
+    'presenceConjoint' => $presenceConjoint,
+    'confirmationConjoint' => $confirmationConjoint,
     'date' => date('Y-m-d H:i:s')
 ];
 

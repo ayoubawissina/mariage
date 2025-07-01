@@ -161,11 +161,35 @@
     <p class="rsvp-welcome">Nous serions ravis de te compter parmi nous pour célébrer notre amour 💍</p>
     
     <form id="rsvpForm" novalidate>
-      <input type="text" name="nom" placeholder="Nom" required>
-      <input type="text" name="prenom" placeholder="Prénom" required>
-      <input type="email" name="email" placeholder="Courriel" required>
-      <button type="submit" class="button">Confirmer ma présence</button>
-    </form>
+  <input type="text" name="nom" placeholder="Nom" required>
+  <input type="text" name="prenom" placeholder="Prénom" required>
+  <input type="email" name="email" placeholder="Courriel" required>
+
+  <label for="invitationCouple">Avez-vous reçu une invitation pour un couple ?</label>
+  <select name="invitationCouple" id="invitationCouple" required>
+    <option value="">-- Sélectionnez --</option>
+    <option value="non">Non</option>
+    <option value="oui">Oui</option>
+  </select>
+
+  <div id="detailsCouple" style="display: none; margin-top: 10px;">
+    <label for="presenceConjoint">Votre conjoint(e) sera-t-il/elle présent(e) ?</label>
+    <select name="presenceConjoint" id="presenceConjoint" required>
+      <option value="">-- Choisissez une réponse --</option>
+      <option value="oui">Oui, nous serons présents</option>
+      <option value="non">Non, je serai seul(e)</option>
+      <option value="incertain">Je ne sais pas encore</option>
+    </select>
+
+    <label style="display: block; margin-top: 10px;">
+      <input type="checkbox" name="confirmationConjoint" required>
+      Je confirme que cette invitation est destinée uniquement à mon/ma conjoint(e) et moi. Aucun remplacement ne sera possible.
+    </label>
+  </div>
+
+  <button type="submit" class="button" style="margin-top: 15px;">Confirmer ma présence</button>
+</form>
+
 
     <p id="confirmationMessage" style="display:none;" class="confirmation-msg">🎉 Merci beaucoup pour ta confirmation !</p>
 
@@ -256,6 +280,24 @@ rsvpForm.addEventListener('submit', (e) => {
 });
 
 </script>
+
+<script>
+  const invitationSelect = document.getElementById('invitationCouple');
+  const detailsCouple = document.getElementById('detailsCouple');
+
+  invitationSelect.addEventListener('change', function () {
+    if (this.value === 'oui') {
+      detailsCouple.style.display = 'block';
+    } else {
+      detailsCouple.style.display = 'none';
+
+      // Réinitialiser les champs masqués
+      document.getElementById('presenceConjoint').value = '';
+      document.querySelector('input[name="confirmationConjoint"]').checked = false;
+    }
+  });
+</script>
+
 
 <script>
   const scrollToTopBtn = document.getElementById('scrollToTop');

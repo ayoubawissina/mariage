@@ -66,7 +66,6 @@ if (file_exists($file)) {
           <th>Email</th>
           <th>Couple ?</th>
           <th>Présence du conjoint</th>
-          <th>Exclusivité confirmée</th>
           <th>Date de confirmation</th>
         </tr>
       </thead>
@@ -78,7 +77,6 @@ if (file_exists($file)) {
             <td><?= htmlspecialchars($invite['email'] ?? '') ?></td>
             <td><?= ucfirst(htmlspecialchars($invite['invitationCouple'] ?? '-')) ?></td>
             <td><?= ucfirst(htmlspecialchars($invite['presenceConjoint'] ?? '-')) ?></td>
-            <td><?= htmlspecialchars($invite['confirmationConjoint'] ?? '-') ?></td>
             <td><?= htmlspecialchars($invite['date'] ?? '-') ?></td>
           </tr>
         <?php endforeach; ?>

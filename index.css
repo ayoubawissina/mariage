@@ -736,6 +736,15 @@
   color: #6e2c2c;
 }
 
+.popup-rsvp form input,
+.popup-rsvp form select,
+.popup-rsvp form button {
+  width: 100%;
+  box-sizing: border-box; /* ← Évite le débordement lié au padding */
+  max-width: 100%;
+}
+
+
 /* Responsive */
 @media (max-width: 480px) {
   .popup-rsvp .popup-content {

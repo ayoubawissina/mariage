@@ -150,10 +150,6 @@
 }
 
 
-.texte {
-  color: #800000;
-
-}
 
 
 
@@ -563,9 +559,7 @@
 	
   }
 
-.temoignage p {
-  text-indent: 2em;
-}
+
 
   #faq li {
     font-size: 0.95em;
@@ -914,4 +908,20 @@
     font-size: 0.95em;
     line-height: 1.5;
   }
+}
+
+
+.temoignage p {
+  text-indent: 2em;
+  margin-bottom: 1em;
+}
+.temoignage p {
+  text-align: justify;
+  margin-bottom: 1em;
+}
+
+
+.texte {
+  color: #800000;
+
 }

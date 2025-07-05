@@ -111,7 +111,7 @@
 .temoignages {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 10px;
   margin-top: 0px;
 }
 
@@ -145,9 +145,17 @@
 
 .temoignage p {
   flex: 1;
-  font-size: 1.1em;
+  font-size: 1.0em;
   line-height: 1.6;
 }
+
+
+.texte {
+  color: #800000;
+
+}
+
+
 
 #rsvp-fixed {
   position: fixed;
@@ -226,7 +234,7 @@
 .img {
   display: flex;
   align-items: stretch; /* ✅ permet aux colonnes d’avoir même hauteur */
-  gap: 20px;
+  gap: 10px;
   height: auto;
   min-height: 100%; /* Utile si l'un des deux est plus court */
 }
@@ -245,6 +253,8 @@
   justify-content: center;
   overflow: hidden;
 }
+
+
 
 .test {
   width: 100%;
@@ -380,7 +390,25 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: 300px; /* Hauteur fixe visible */
+  overflow-y: auto;  /* Défilement si contenu dépasse */
+  padding-right: 10px; /* Optionnel : éviter que la scrollbar cache du texte */
 }
+
+#faq ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+#faq ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+#faq ul::-webkit-scrollbar-thumb {
+  background-color: #B76E79;
+  border-radius: 10px;
+}
+
 
 #faq li {
   background-color: rgba(255, 255, 255, 0.3);
@@ -532,7 +560,12 @@
   .temoignage p {
     font-size: 1em;
     padding: 0 10px;
+	
   }
+
+.temoignage p {
+  text-indent: 2em;
+}
 
   #faq li {
     font-size: 0.95em;
@@ -832,4 +865,53 @@
   font-weight: 600;
   font-size: 0.95em;
   color: #6e2c2c;
+}
+
+
+
+.temoignage.special {
+  display: block;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.temoignage.special img {
+  width: 200px; /* Plus petit que l'autre image */
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.temoignage.special p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+
+@media screen and (max-width: 991px) {
+  .temoignage.special {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+
+  .temoignage.special img {
+    float: none;
+    width: 90%;
+    max-width: 280px;
+    margin: 0 0 15px 0;
+  }
+
+  .temoignage.special p {
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .temoignage.special p {
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
 }

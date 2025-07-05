@@ -556,6 +556,8 @@
   .temoignage p {
     font-size: 1em;
     padding: 0 10px;
+	line-height: 2;
+
 	
   }
 
@@ -906,7 +908,7 @@
 @media screen and (max-width: 600px) {
   .temoignage.special p {
     font-size: 0.95em;
-    line-height: 1.5;
+    line-height: 2;
   }
 }
 

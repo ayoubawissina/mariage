@@ -21,3 +21,5 @@ RUN composer install --no-interaction --no-ansi --no-progress --prefer-dist
 
 # Étape 7 : Expose le port Apache
 EXPOSE 80
+
+

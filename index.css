@@ -563,7 +563,7 @@ font-family: 'Bookman Old Style', serif;
   }
 
   .temoignage p {
-    font-size: 1em;
+    font-size: 1.5em;
     padding: 0 10px;
 	line-height: 2;
 
@@ -916,7 +916,7 @@ font-family: 'Bookman Old Style', serif;
 }
 @media screen and (max-width: 600px) {
   .temoignage.special p {
-    font-size: 0.95em;
+    font-size: 1.5em;
     line-height: 2;
   }
 }

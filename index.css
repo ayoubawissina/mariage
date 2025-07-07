@@ -1,6 +1,6 @@
      body {
       margin: 0;
-      font-family: 'Open Sans', sans-serif;
+font-family: 'Bookman Old Style', serif;
       background-image: url('bac1.avif');
       background-size: cover;
       background-attachment: fixed;
@@ -123,11 +123,19 @@
 
 #temoignages h2{
       text-align: center;
+	  
+}
+
+#temoignages h3{
+	   font-size: 1.5em;
+ 
 }
 
 #temoignages {
 	/*background-color: rgba(255,255,255,0.8);*/
 	background-color: white;
+	font-family: 'Gabriola', cursive;
+
 
 }
 
@@ -145,8 +153,8 @@
 
 .temoignage p {
   flex: 1;
-  font-size: 1.0em;
-  line-height: 1.6;
+  font-size: 1.5em;
+  line-height: 1.5;
 }
 
 
@@ -242,6 +250,7 @@
   display: flex;
   flex-direction: column;
 }
+
 
 .img1 {
   display: flex;
@@ -881,8 +890,8 @@
 }
 
 .temoignage.special p {
-  font-size: 1em;
-  line-height: 1.6;
+  font-size: 1.5em;
+  line-height: 1.3;
 }
 
 

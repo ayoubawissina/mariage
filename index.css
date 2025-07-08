@@ -918,7 +918,9 @@ font-family: 'Bookman Old Style', serif;
 }
 @media screen and (max-width: 600px) {
   .temoignage.special p {
-    font-size: 1.5em;
+	  	  font-family: 'Open Sans', sans-serif;
+
+    font-size: 0.95em;
     line-height: 2;
   }
 }

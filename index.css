@@ -563,7 +563,9 @@ font-family: 'Bookman Old Style', serif;
   }
 
   .temoignage p {
-    font-size: 1.5em;
+	  font-family: 'Open Sans', sans-serif;
+
+    font-size: 0.95em;
     padding: 0 10px;
 	line-height: 2;
 

@@ -534,7 +534,7 @@ font-family: 'Traditional Arabic', serif;
 /* ✅ TRÈS PETITS ÉCRANS (téléphones) */
 @media screen and (max-width: 600px) {
   header h1 {
-    font-size: 1.8em;
+    font-size: 1.3em;
   }
 
   header p {
@@ -565,7 +565,7 @@ font-family: 'Traditional Arabic', serif;
   .temoignage p {
 font-family: 'Traditional Arabic', serif;
 
-    font-size: 0.95em;
+    font-size: 1em;
     padding: 0 10px;
 	line-height: 2;
 
@@ -920,7 +920,7 @@ font-family: 'Traditional Arabic', serif;
   .temoignage.special p {
 font-family: 'Traditional Arabic', serif;
 
-    font-size: 0.95em;
+    font-size: 1em;
     line-height: 2;
   }
 }

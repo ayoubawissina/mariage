@@ -223,7 +223,6 @@ font-family: 'Traditional Arabic', serif;
   margin: 0px auto;
   max-width: 1000px;
   padding: 5px;
-  border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
@@ -235,20 +234,12 @@ font-family: 'Traditional Arabic', serif;
   padding-bottom: 4px; /* petit espace contrôlé si nécessaire */
 }
 
-#video h2 img {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
 
 @media screen and (max-width: 768px) {
   #video h2 {
     font-size: 1.4em;
     margin: 0 !important;
     padding-bottom: 0px;
-	  line-height: 1;
 
   }
 
@@ -978,7 +969,5 @@ font-family: 'Traditional Arabic', serif;
   height: 90vh;              /* vidéo occupe 90% de la hauteur de l'écran */
   width: auto;               /* largeur auto pour garder le ratio portrait */
   max-width: 75vw;           /* limite à 80% de la largeur de l'écran */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 

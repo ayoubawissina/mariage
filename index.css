@@ -219,7 +219,7 @@ font-family: 'Traditional Arabic', serif;
 
 #video {
   text-align: center;
-  /*background-color: rgba(255, 255, 255, 0.4);*/
+      background-image: url('bac1.avif');
   	  background-color:white;
   margin: 40px auto;
   max-width: 1000px;
@@ -361,7 +361,6 @@ font-family: 'Traditional Arabic', serif;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 6px;
-  font-family: 'Open Sans', sans-serif;
   word-break: break-word; /* Pour éviter un débordement */
 }
 
@@ -940,3 +939,19 @@ font-family: 'Traditional Arabic', serif;
   color: #800000;
 
 }
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;              /* max hauteur écran */
+}
+
+.video-responsive {
+  height: 90vh;              /* vidéo occupe 90% de la hauteur de l'écran */
+  width: auto;               /* largeur auto pour garder le ratio portrait */
+  max-width: 80vw;           /* limite à 80% de la largeur de l'écran */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+

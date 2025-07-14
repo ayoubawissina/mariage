@@ -234,6 +234,38 @@ font-family: 'Traditional Arabic', serif;
   padding-bottom: 4px; /* petit espace contrôlé si nécessaire */
 }
 
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;  /* max hauteur écran */
+    margin: 0; /* important si ton navigateur ajoute un espacement par défaut */
+
+}
+
+.video-responsive {
+  height: 90vh;              /* vidéo occupe 90% de la hauteur de l'écran */
+  width: auto;               /* largeur auto pour garder le ratio portrait */
+  max-width: 75vw;           /* limite à 80% de la largeur de l'écran */
+}
+
+#video h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+#video h2 img {
+  margin: 0;
+  vertical-align: middle;
+  width: 2em;
+  height: 2em;
+}
+
 
 @media screen and (max-width: 768px) {
   #video h2 {
@@ -247,6 +279,25 @@ font-family: 'Traditional Arabic', serif;
     margin: 0 !important;
     padding: 0 !important;
   }
+  
+  #video {
+  gap:0px;
+}
+
+#video {
+  padding: 5px 10px;
+}
+
+.video-wrapper {
+  margin-top: 0 !important;
+}
+
+#video video {
+  margin: 0 auto;
+  display: block;
+}
+
+  
 }
 
 
@@ -954,20 +1005,5 @@ font-family: 'Traditional Arabic', serif;
 .texte {
   color: #800000;
 
-}
-
-.video-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;  /* max hauteur écran */
-    margin: 0; /* important si ton navigateur ajoute un espacement par défaut */
-
-}
-
-.video-responsive {
-  height: 90vh;              /* vidéo occupe 90% de la hauteur de l'écran */
-  width: auto;               /* largeur auto pour garder le ratio portrait */
-  max-width: 75vw;           /* limite à 80% de la largeur de l'écran */
 }
 

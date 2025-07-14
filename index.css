@@ -219,20 +219,19 @@ font-family: 'Traditional Arabic', serif;
 
 #video {
   text-align: center;
-      background-image: url('bac1.avif');
   	  background-color:white;
-  margin: 40px auto;
+  margin: 5px auto;
   max-width: 1000px;
-  padding: 30px;
+  padding: 5px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-#video h2 {
+#video h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2em;
   color: #800000;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .img {

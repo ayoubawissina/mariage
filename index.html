@@ -358,19 +358,24 @@ rsvpForm.addEventListener('submit', (e) => {
 
 <script>
   const invitationSelect = document.getElementById('invitationCouple');
-  const detailsCouple = document.getElementById('detailsCouple');
+const detailsCouple = document.getElementById('detailsCouple');
+const presenceConjoint = document.getElementById('presenceConjoint');
+const confirmationConjoint = document.querySelector('input[name="confirmationConjoint"]');
 
-  invitationSelect.addEventListener('change', function () {
-    if (this.value === 'oui') {
-      detailsCouple.style.display = 'block';
-    } else {
-      detailsCouple.style.display = 'none';
+invitationSelect.addEventListener('change', function () {
+  if (this.value === 'oui') {
+    detailsCouple.style.display = 'block';
+    presenceConjoint.setAttribute('required', 'required');
+    confirmationConjoint.setAttribute('required', 'required');
+  } else {
+    detailsCouple.style.display = 'none';
+    presenceConjoint.value = '';
+    confirmationConjoint.checked = false;
+    presenceConjoint.removeAttribute('required');
+    confirmationConjoint.removeAttribute('required');
+  }
+});
 
-      // Réinitialiser les champs masqués
-      document.getElementById('presenceConjoint').value = '';
-      document.querySelector('input[name="confirmationConjoint"]').checked = false;
-    }
-  });
 </script>
 
 

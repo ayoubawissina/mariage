@@ -142,15 +142,14 @@ try {
 function uploadToGoogleDrive($localPath, $driveFolderId, $credentialsPath = 'credentials.json') {
     require_once 'vendor/autoload.php';
 
-    $client = new Google_Client();
-	$credentialsJson = getenv('GOOGLE_CREDENTIALS_JSON');
+    $credentialsJson = getenv('GOOGLE_CREDENTIALS_JSON');
 $tempPath = '/tmp/credentials.json';
-
 file_put_contents($tempPath, $credentialsJson);
 
-$client->setAuthConfig($tempPath); // <-- utiliser le bon fichier ici
+$client = new Google_Client();
+$client->setAuthConfig($tempPath); // Utilise bien le chemin du fichier temporaire
+$client->addScope(Google_Service_Drive::DRIVE);
 
-    $client->addScope(Google_Service_Drive::DRIVE);
     $service = new Google_Service_Drive($client);
 
     // Vérifie si le fichier existe déjà dans le dossier

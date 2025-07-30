@@ -241,6 +241,15 @@
   <input type="text" name="nom" placeholder="Nom" required>
   <input type="text" name="prenom" placeholder="Prénom" required>
   <input type="email" name="email" placeholder="Courriel" required>
+  
+<!-- Nouveau champ : Serez-vous présent ? -->
+<label for="presenceInvite">Serez-vous présent(e) ?</label>
+<select name="presenceInvite" id="presenceInvite" required>
+  <option value="">-- Choisissez --</option>
+  <option value="oui">Oui</option>
+  <option value="non">Non</option>
+</select>
+
 
   <label for="invitationCouple">Avez-vous reçu une invitation pour un couple ?</label>
   <select name="invitationCouple" id="invitationCouple" required>
@@ -275,6 +284,48 @@
 
 
     <script src="script.js"></script>
+	
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const presenceInvite = document.getElementById('presenceInvite');
+  const invitationCouple = document.getElementById('invitationCouple');
+  const detailsCouple = document.getElementById('detailsCouple');
+  const presenceConjoint = document.getElementById('presenceConjoint');
+
+  function updateCoupleSection() {
+    const isPresent = presenceInvite.value === 'oui';
+    const isCouple = invitationCouple.value === 'oui';
+
+    if (isCouple) {
+      detailsCouple.style.display = 'block';
+
+      // Si la personne n'est PAS présente mais a une invitation de couple
+      if (!isPresent) {
+        // Modifier les options
+        presenceConjoint.innerHTML = `
+          <option value="">-- Choisissez une réponse --</option>
+          <option value="oui">Oui, mon conjoint sera présent</option>
+          <option value="non">Non, mon conjoint ne sera pas présent</option>
+        `;
+      } else {
+        // Garder les options normales
+        presenceConjoint.innerHTML = `
+          <option value="">-- Choisissez une réponse --</option>
+          <option value="oui">Oui, nous serons présents</option>
+          <option value="non">Non, je serai seul(e)</option>
+        `;
+      }
+    } else {
+      detailsCouple.style.display = 'none';
+    }
+  }
+
+  presenceInvite.addEventListener('change', updateCoupleSection);
+  invitationCouple.addEventListener('change', updateCoupleSection);
+});
+</script>
+
+
 <script>
   const hamburger = document.getElementById('hamburger');
 const popupNav = document.getElementById('popupNav');

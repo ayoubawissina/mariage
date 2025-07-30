@@ -16,6 +16,25 @@ $email = $_POST['email'] ?? '';
 $invitationCouple = $_POST['invitationCouple'] ?? '';
 $presenceConjoint = $_POST['presenceConjoint'] ?? '';
 $confirmationConjoint = isset($_POST['confirmationConjoint']) ? 'Oui' : 'Non';
+$presenceInvite = $_POST['presenceInvite'] ?? '';
+$messageRSVP = "";
+
+if ($presenceInvite === 'oui' && $invitationCouple === 'non') {
+    $messageRSVP = "<p>$prenom $nom sera présent au mariage. Il n'a pas reçu d'invitation de couple.</p>";
+} elseif ($presenceInvite === 'non' && $invitationCouple === 'non') {
+    $messageRSVP = "<p>$prenom $nom ne pourra pas être présent au mariage. Il n'a pas reçu d'invitation de couple.</p>";
+} elseif ($presenceInvite === 'oui' && $invitationCouple === 'oui' && $presenceConjoint === 'oui') {
+    $messageRSVP = "<p>$prenom $nom et son/sa conjoint(e) seront tous les deux présents au mariage.</p>";
+} elseif ($presenceInvite === 'non' && $invitationCouple === 'oui' && $presenceConjoint === 'oui') {
+    $messageRSVP = "<p>$prenom $nom ne sera pas présent, mais son/sa conjoint(e) y assistera.</p>";
+} elseif ($presenceInvite === 'non' && $invitationCouple === 'oui' && $presenceConjoint === 'non') {
+    $messageRSVP = "<p>Ni $prenom $nom, ni son/sa conjoint(e) ne pourront être présents au mariage.</p>";
+} elseif ($presenceInvite === 'oui' && $invitationCouple === 'oui' && $presenceConjoint === 'non') {
+    $messageRSVP = "<p>$prenom $nom sera présent au mariage sans son/sa conjoint(e).</p>";
+} else {
+    $messageRSVP = "<p>Informations incomplètes ou cas non prévu.</p>";
+}
+
 
 // Validation
 if (empty($nom) || empty($prenom) || empty($email)) {
@@ -33,14 +52,16 @@ $validationLink = $siteURL . "/valider_invite.php?"
     . "&email=" . urlencode($email)
     . "&invitationCouple=" . urlencode($invitationCouple)
     . "&presenceConjoint=" . urlencode($presenceConjoint)
-    . "&confirmationConjoint=" . urlencode($confirmationConjoint);
+    . "&confirmationConjoint=" . urlencode($confirmationConjoint)
+	. "&presenceInvite=" . urlencode($presenceInvite);
 
 // 🛠️ Construction du contenu de l'email
 $body = "
-  <h2>Nouveau RSVP</h2>
-  <p><strong>$prenom $nom</strong> a confirmé sa présence au mariage.</p>
+<h2>Confirmation RSVP</h2>
+  $messageRSVP
   <ul>
     <li><strong>Courriel :</strong> $email</li>
+	<li><strong>Présence :</strong> " . ucfirst($presenceInvite) . "</li>
     <li><strong>Invitation couple :</strong> " . ucfirst($invitationCouple) . "</li>";
 
 if ($invitationCouple === 'oui') {

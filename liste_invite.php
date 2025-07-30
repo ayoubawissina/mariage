@@ -1,12 +1,36 @@
 <?php
-$file = __DIR__ . '/invites.json';
 
-if (file_exists($file)) {
-    $invites = json_decode(file_get_contents($file), true);
+require_once 'vendor/autoload.php';
+
+function downloadFromGoogleDrive($driveFileName, $driveFolderId, $credentialsPath = 'credentials.json') {
+    $client = new Google_Client();
+    $client->setAuthConfig($credentialsPath);
+    $client->addScope(Google_Service_Drive::DRIVE);
+    $service = new Google_Service_Drive($client);
+
+    // Rechercher le fichier dans le dossier
+    $query = "'$driveFolderId' in parents and name = '$driveFileName' and trashed = false";
+    $files = $service->files->listFiles(['q' => $query]);
+
+    if (count($files->getFiles()) === 0) return null;
+
+    $fileId = $files->getFiles()[0]->getId();
+    $response = $service->files->get($fileId, ['alt' => 'media']);
+
+    return $response->getBody()->getContents();
+}
+
+
+$folderId = '1Uyqf39Ro-efKaA1Z48MYp3K7AZn3Bon5';
+$jsonData = downloadFromGoogleDrive('invites.json', $folderId, __DIR__ . '/credentials.json');
+
+if ($jsonData) {
+    $invites = json_decode($jsonData, true);
     if (!is_array($invites)) $invites = [];
 } else {
     $invites = [];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +88,8 @@ if (file_exists($file)) {
           <th>Prénom</th>
           <th>Nom</th>
           <th>Email</th>
-          <th>Couple ?</th>
+		  <th>Presence des invités</th>
+          <th>Couple </th>
           <th>Présence du conjoint</th>
           <th>Date de confirmation</th>
         </tr>
@@ -75,6 +100,7 @@ if (file_exists($file)) {
             <td><?= htmlspecialchars($invite['prenom'] ?? '') ?></td>
             <td><?= htmlspecialchars($invite['nom'] ?? '') ?></td>
             <td><?= htmlspecialchars($invite['email'] ?? '') ?></td>
+			<td><?= ucfirst(htmlspecialchars($invite['presenceInvite'] ?? '-')) ?></td>
             <td><?= ucfirst(htmlspecialchars($invite['invitationCouple'] ?? '-')) ?></td>
             <td><?= ucfirst(htmlspecialchars($invite['presenceConjoint'] ?? '-')) ?></td>
             <td><?= htmlspecialchars($invite['date'] ?? '-') ?></td>

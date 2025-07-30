@@ -10,179 +10,121 @@ $email = $_GET['email'] ?? '';
 $invitationCouple = $_GET['invitationCouple'] ?? '';
 $presenceConjoint = $_GET['presenceConjoint'] ?? '';
 $confirmationConjoint = $_GET['confirmationConjoint'] ?? '';
-$presenceInvite = $_GET['presenceInvite'] ?? '';
+$presence = $_GET['presence'] ?? '';
 
+// Charger les invités existants
+$file = 'invites.json';
+$invites = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
 
-if (!$nom || !$prenom || !$email) {
-    die('Informations manquantes.');
-}
-
-$file = __DIR__ . '/invites.json';
-
-// Lire les invités déjà enregistrés
-if (file_exists($file)) {
-    $json = file_get_contents($file);
-    $invites = json_decode($json, true);
-    if (!is_array($invites)) $invites = [];
-} else {
-    $invites = [];
-}
-
-// Vérifier doublon par email
-foreach ($invites as $invite) {
-    if (strtolower($invite['email']) === strtolower($email)) {
-        die('Cette personne est déjà confirmée.');
-    }
-}
-
-// Ajouter le nouvel invité
+// Ajouter un nouvel invité
 $invites[] = [
     'nom' => $nom,
     'prenom' => $prenom,
     'email' => $email,
-    'presenceInvite' => $presenceInvite,
     'invitationCouple' => $invitationCouple,
+    'presence' => $presence,
     'presenceConjoint' => $presenceConjoint,
     'confirmationConjoint' => $confirmationConjoint,
-    'date' => date('Y-m-d H:i:s')
 ];
-
-
-// Personnalisation du message selon les scénarios
-$messagePerso = "";
-
-if ($presenceConjoint === 'non' && $invitationCouple === 'non') {
-    if ($confirmationConjoint === 'oui') {
-        // Scenario improbable (conjoint confirmé sans invitation couple), on ignore
-        $messagePerso = "<p>Merci pour votre confirmation.</p>";
-    } else {
-        // 1. Présent et pas d'invitation couple
-        if (strtolower($confirmationConjoint) === 'oui' || strtolower($confirmationConjoint) === 'non') {
-            // Le seul invité
-            $messagePerso = "
-                <p>Bonjour <strong>$prenom</strong>,</p>
-                <p>Merci d'avoir confirmé votre présence à notre mariage. Nous sommes ravis de savoir que vous serez des nôtres le <strong>19 septembre</strong>.</p>
-                <p>À très bientôt !<br><strong>Camille & Patrick</strong></p>";
-        }
-    }
-} elseif ($presenceConjoint === 'non' && $invitationCouple === 'oui') {
-    // Invitation couple
-    if ($confirmationConjoint === 'non' && $presenceConjoint === 'non') {
-        // 5. Ni l'invité ni le conjoint ne seront présents
-        $messagePerso = "
-            <p>Bonjour <strong>$prenom</strong>,</p>
-            <p>Nous sommes désolés d'apprendre que vous et votre conjoint(e) ne pourrez pas être présents lors de notre mariage.</p>
-            <p>Nous vous remercions de nous avoir informés et espérons vous revoir bientôt.</p>
-            <p><strong>Camille & Patrick</strong></p>";
-    } elseif ($confirmationConjoint === 'non' && $presenceConjoint === 'oui') {
-        // 4. Invité absent, conjoint présent
-        $messagePerso = "
-            <p>Bonjour <strong>$prenom</strong>,</p>
-            <p>Merci pour votre retour. Nous avons bien noté que vous ne pourrez pas être présent, mais que votre conjoint(e) y assistera.</p>
-            <p>Nous avons hâte de célébrer avec lui/elle le <strong>19 septembre</strong>.</p>
-            <p><strong>Camille & Patrick</strong></p>";
-    } elseif ($confirmationConjoint === 'oui' && $presenceConjoint === 'oui') {
-        // 3. Invité et conjoint présents
-        $messagePerso = "
-            <p>Bonjour <strong>$prenom</strong>,</p>
-            <p>Merci d'avoir confirmé que vous et votre conjoint(e) serez présents à notre mariage. Nous sommes impatients de partager ce moment avec vous deux le <strong>19 septembre</strong>.</p>
-            <p>À très bientôt !<br><strong>Camille & Patrick</strong></p>";
-    }
-} elseif ($presenceConjoint === 'non' && $invitationCouple === 'non') {
-    // 2. Personne ne sera pas présent (pas invitation couple)
-    $messagePerso = "
-        <p>Bonjour <strong>$prenom</strong>,</p>
-        <p>Nous avons bien pris note que vous ne pourrez pas être présent à notre mariage.</p>
-        <p>Nous vous remercions de nous avoir prévenus et espérons vous revoir bientôt.</p>
-        <p><strong>Camille & Patrick</strong></p>";
-} else {
-    // Cas par défaut / info incomplète
-    $messagePerso = "
-        <p>Bonjour <strong>$prenom</strong>,</p>
-        <p>Merci pour votre réponse. Si vous souhaitez modifier votre confirmation, n'hésitez pas à nous contacter.</p>
-        <p><strong>Camille & Patrick</strong></p>";
-}
-
 
 // Enregistrer dans le fichier
 file_put_contents($file, json_encode($invites, JSON_PRETTY_PRINT));
 
-// Envoyer le mail
+// PHPMailer configuration
 $mail = new PHPMailer(true);
-$mail->CharSet = 'UTF-8';
 
 try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'patrick.mc1925@gmail.com';
-    $mail->Password = 'knwitzoqyxdhijlu';
-    $mail->SMTPSecure = 'tls';
+    $mail->Username = 'appartox.contact@gmail.com';
+    $mail->Password = getenv('SMTP_PASSWORD'); // Ne jamais mettre en dur
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
-    $mail->setFrom('patrick.mc1925@gmail.com', 'Camille & Patrick');
-    $mail->addAddress($email);
+    $mail->setFrom('appartox.contact@gmail.com', 'Patrick et Camille');
+    $mail->addAddress($email, "$prenom $nom");
+
     $mail->isHTML(true);
-    $mail->Subject = 'Votre présence a été confirmée !';
-	$mail->Body = "
-  <div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
-        $messagePerso
-  </div>
-";
+    $mail->Subject = 'Confirmation de présence - Mariage de Patrick et Camille';
+
+    // Messages personnalisés
+    if ($presence == 'oui' && $invitationCouple == 'non') {
+        $body = "Bonjour $prenom, merci pour votre confirmation de présence à notre mariage ! Nous avons hâte de vous voir.";
+    } elseif ($presence == 'non' && $invitationCouple == 'non') {
+        $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir à notre mariage. Vous serez avec nous en pensée.";
+    } elseif ($presence == 'oui' && $invitationCouple == 'oui') {
+        if ($presenceConjoint == 'oui') {
+            $body = "Bonjour $prenom, merci pour votre confirmation de présence ainsi que celle de votre conjoint. Nous avons hâte de vous voir tous les deux !";
+        } else {
+            $body = "Bonjour $prenom, merci pour votre confirmation. Nous avons noté que vous viendrez sans votre conjoint.";
+        }
+    } elseif ($presence == 'non' && $invitationCouple == 'oui') {
+        $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir avec votre conjoint. Merci pour votre réponse.";
+    } else {
+        $body = "Bonjour $prenom, merci pour votre réponse.";
+    }
+
+    $mail->Body = $body;
 
     $mail->send();
-
     echo "Confirmation enregistrée et mail envoyé à l'invité.";
-
 } catch (Exception $e) {
-    echo "Erreur mail invité : " . $mail->ErrorInfo;
+    echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
 }
 
-
-function uploadToGoogleDrive($localPath, $driveFolderId, $credentialsPath) {
+// Upload vers Google Drive
+function uploadToGoogleDrive($filePath, $folderId, $credentialsPath) {
     require_once 'vendor/autoload.php';
 
     $client = new Google_Client();
     $client->setAuthConfig($credentialsPath);
-    $client->addScope(Google_Service_Drive::DRIVE);
+    $client->addScope(Google_Service_Drive::DRIVE_FILE);
 
     $service = new Google_Service_Drive($client);
 
-    $fileMetadata = new Google_Service_Drive_DriveFile([
-        'name' => basename($localPath),
-        'parents' => [$driveFolderId]
+    // Chercher un fichier existant avec le même nom
+    $response = $service->files->listFiles([
+        'q' => "name = '" . basename($filePath) . "' and '$folderId' in parents and trashed = false",
+        'fields' => 'files(id, name)',
     ]);
 
-    $content = file_get_contents($localPath);
+    if (count($response->files) > 0) {
+        $existingFileId = $response->files[0]->id;
 
-    // Recherche un fichier existant de même nom
-    $query = "'$driveFolderId' in parents and name = '".basename($localPath)."' and trashed = false";
-    $existingFiles = $service->files->listFiles(['q' => $query]);
+        $fileMetadata = new Google_Service_Drive_DriveFile();
+        $content = file_get_contents($filePath);
 
-    if (count($existingFiles->getFiles()) > 0) {
-        $fileId = $existingFiles->getFiles()[0]->getId();
-        $service->files->update($fileId, $fileMetadata, [
+        $service->files->update($existingFileId, $fileMetadata, [
             'data' => $content,
             'mimeType' => 'application/json',
-            'uploadType' => 'multipart'
+            'uploadType' => 'multipart',
         ]);
     } else {
+        $fileMetadata = new Google_Service_Drive_DriveFile([
+            'name' => basename($filePath),
+            'parents' => [$folderId]
+        ]);
+
+        $content = file_get_contents($filePath);
+
         $service->files->create($fileMetadata, [
             'data' => $content,
             'mimeType' => 'application/json',
-            'uploadType' => 'multipart'
+            'uploadType' => 'multipart',
         ]);
     }
 }
 
-
+// Sauvegarder les credentials dans /tmp
 $tempPath = '/tmp/credentials.json';
+$credentialsJson = getenv('GOOGLE_CREDENTIALS_JSON');
+
+if (!$credentialsJson) {
+    die('Clé API Google manquante.');
+}
+
 file_put_contents($tempPath, $credentialsJson);
 
-// Appel avec ID dossier partagé
-
-// Enregistrer dans le fichier local
-file_put_contents($file, json_encode($invites, JSON_PRETTY_PRINT));
-
-// Sauvegarder sur Google Drive
+// Effectuer l’upload vers Drive
 uploadToGoogleDrive($file, '1Uyqf39Ro-efKaA1Z48MYp3K7AZn3Bon5', $tempPath);

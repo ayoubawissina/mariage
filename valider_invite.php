@@ -174,19 +174,7 @@ function uploadToGoogleDrive($localPath, $driveFolderId, $credentialsPath) {
         ]);
     }
 }
-$credentialsJson = '{
-  "type": "service_account",
-  "project_id": "mariage-467516",
-  "private_key_id": "0381322d60ede9dee6951e737b5b9f03903801c8",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0B...taClC3rA==\n-----END PRIVATE KEY-----\n",
-  "client_email": "raouf-884@mariage-467516.iam.gserviceaccount.com",
-  "client_id": "105507508440720247577",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/raouf-884%40mariage-467516.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}';
+
 
 $tempPath = '/tmp/credentials.json';
 file_put_contents($tempPath, $credentialsJson);

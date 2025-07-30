@@ -139,40 +139,34 @@ try {
 }
 
 
-function uploadToGoogleDrive($localPath, $driveFolderId, $credentialsPath = 'credentials.json') {
+function uploadToGoogleDrive($localPath, $driveFolderId, $credentialsPath) {
     require_once 'vendor/autoload.php';
 
-    $credentialsJson = getenv('GOOGLE_CREDENTIALS_JSON');
-$tempPath = '/tmp/credentials.json';
-file_put_contents($tempPath, $credentialsJson);
-
-$client = new Google_Client();
-$client->setAuthConfig($tempPath); // Utilise bien le chemin du fichier temporaire
-$client->addScope(Google_Service_Drive::DRIVE);
+    $client = new Google_Client();
+    $client->setAuthConfig($credentialsPath);
+    $client->addScope(Google_Service_Drive::DRIVE);
 
     $service = new Google_Service_Drive($client);
 
-    // Vérifie si le fichier existe déjà dans le dossier
-    $query = "'$driveFolderId' in parents and name = 'invites.json' and trashed = false";
-    $files = $service->files->listFiles(['q' => $query]);
-
     $fileMetadata = new Google_Service_Drive_DriveFile([
-        'name' => 'invites.json',
+        'name' => basename($localPath),
         'parents' => [$driveFolderId]
     ]);
 
     $content = file_get_contents($localPath);
 
-    if (count($files->getFiles()) > 0) {
-        // Mettre à jour le fichier existant
-        $fileId = $files->getFiles()[0]->getId();
+    // Recherche un fichier existant de même nom
+    $query = "'$driveFolderId' in parents and name = '".basename($localPath)."' and trashed = false";
+    $existingFiles = $service->files->listFiles(['q' => $query]);
+
+    if (count($existingFiles->getFiles()) > 0) {
+        $fileId = $existingFiles->getFiles()[0]->getId();
         $service->files->update($fileId, $fileMetadata, [
             'data' => $content,
             'mimeType' => 'application/json',
             'uploadType' => 'multipart'
         ]);
     } else {
-        // Créer un nouveau fichier
         $service->files->create($fileMetadata, [
             'data' => $content,
             'mimeType' => 'application/json',
@@ -180,6 +174,25 @@ $client->addScope(Google_Service_Drive::DRIVE);
         ]);
     }
 }
+$credentialsJson = '{
+  "type": "service_account",
+  "project_id": "mariage-467516",
+  "private_key_id": "0381322d60ede9dee6951e737b5b9f03903801c8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0B...taClC3rA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "raouf-884@mariage-467516.iam.gserviceaccount.com",
+  "client_id": "105507508440720247577",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/raouf-884%40mariage-467516.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}';
+
+$tempPath = '/tmp/credentials.json';
+file_put_contents($tempPath, $credentialsJson);
+
+// Appel avec ID dossier partagé
+
 // Enregistrer dans le fichier local
 file_put_contents($file, json_encode($invites, JSON_PRETTY_PRINT));
 

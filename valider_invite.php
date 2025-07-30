@@ -144,12 +144,12 @@ function uploadToGoogleDrive($localPath, $driveFolderId, $credentialsPath = 'cre
 
     $client = new Google_Client();
 	$credentialsJson = getenv('GOOGLE_CREDENTIALS_JSON');
-$tempPath = '/tmp/credentials.json'; // dossier temporaire sur Render
+$tempPath = '/tmp/credentials.json';
 
-// Écrire le contenu dans un fichier temporaire
 file_put_contents($tempPath, $credentialsJson);
 
-    $client->setAuthConfig($credentialsPath);
+$client->setAuthConfig($tempPath); // <-- utiliser le bon fichier ici
+
     $client->addScope(Google_Service_Drive::DRIVE);
     $service = new Google_Service_Drive($client);
 

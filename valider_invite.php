@@ -37,12 +37,12 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'appartox.contact@gmail.com';
-    $mail->Password = getenv('SMTP_PASSWORD'); // Ne jamais mettre en dur
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Username   = 'patrick.mc1925@gmail.com';
+  $mail->Password   = 'knwitzoqyxdhijlu';
+  $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    $mail->setFrom('appartox.contact@gmail.com', 'Patrick et Camille');
+    $mail->setFrom('patrick.mc1925@gmail.com', 'Patrick et Camille');
     $mail->addAddress($email, "$prenom $nom");
 
     $mail->isHTML(true);

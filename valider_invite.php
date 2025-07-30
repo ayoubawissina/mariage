@@ -40,12 +40,13 @@ $invites[] = [
     'nom' => $nom,
     'prenom' => $prenom,
     'email' => $email,
-	'presenceInvite' = $presenceInvite ,
-	'invitationCouple' => $invitationCouple,
+    'presenceInvite' => $presenceInvite,
+    'invitationCouple' => $invitationCouple,
     'presenceConjoint' => $presenceConjoint,
     'confirmationConjoint' => $confirmationConjoint,
     'date' => date('Y-m-d H:i:s')
 ];
+
 
 // Personnalisation du message selon les scénarios
 $messagePerso = "";

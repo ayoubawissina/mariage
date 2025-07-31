@@ -50,6 +50,7 @@ try {
     <table>
       <thead>
         <tr>
+		  <th>#</th>
           <th>Prénom</th>
           <th>Nom</th>
           <th>Email</th>

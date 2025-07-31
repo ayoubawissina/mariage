@@ -71,21 +71,68 @@ try {
 
     // Message personnalisé
     if ($presenceInvite == 'oui' && $invitationCouple == 'non') {
-    $body = "Bonjour $prenom, merci pour votre confirmation de présence à notre mariage ! Nous avons hâte de vous voir.";
+    $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+    <p>Bonjour <strong>$prenom</strong>,</p>
+    <p>Merci pour votre réponse !<br>
+    Votre présence à notre mariage est désormais <strong>confirmée</strong>.</p>
+    <p>Nous avons hâte de vous retrouver le <strong>19 septembre</strong> pour célébrer ensemble ce moment unique.</p>
+    <p>À très bientôt !<br>
+    <strong>Camille & Patrick</strong></p>
+  </div>";
+  
 } elseif ($presenceInvite == 'non' && $invitationCouple == 'non') {
-    $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir à notre mariage. Vous serez avec nous en pensée.";
-} elseif ($presenceInvite == 'oui' && $invitationCouple == 'oui') {
-    $body = ($presenceConjoint == 'oui') ?
-        "Bonjour $prenom, merci pour votre confirmation ainsi que celle de votre conjoint. Nous avons hâte de vous voir tous les deux !" :
-        "Bonjour $prenom, merci pour votre confirmation. Nous avons noté que vous viendrez sans votre conjoint.";
-} elseif ($presenceInvite == 'non' && $invitationCouple == 'oui') {
-    $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir avec votre conjoint. Merci pour votre réponse.";
-} else {
-    $body = "Bonjour $prenom, merci pour votre réponse.";
+    $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+        <p>Bonjour <strong>$prenom</strong>,</p>
+        <p>Nous sommes désolés que tu ne puisses pas venir à notre mariage.</p>
+        <p>Tu seras avec nous en pensée 💌</p>
+        <p>À bientôt,<br><strong>Camille & Patrick ❤️</strong></p>
+    </div>";
+
+
+} elseif ($presenceInvite == 'oui' && $invitationCouple == 'oui' && $presenceConjoint == 'non') {
+    $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+        <p>Bonjour <strong>$prenom</strong>,</p>
+        <p>Nous avons bien reçu ta réponse et nous sommes heureux que tu sois des nôtres pour notre mariage ! 🎊</p>
+        <p>Nous avons bien noté que tu viendras sans ton/ta conjoint(e), et nous avons hâte de te voir le <strong>19 septembre</strong> pour célébrer ensemble ce moment unique.</p>
+        <p>Merci de venir célébrer avec nous 🥂</p>
+        <p>À très bientôt !<br><strong>Camille & Patrick ❤️</strong></p>
+    </div>";
+
+
+} elseif ($presenceInvite == 'oui' && $invitationCouple == 'oui' && $presenceConjoint == 'oui') {
+    $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+        <p>Bonjour <strong>$prenom</strong>,</p>
+        <p>Merci d'avoir confirmé votre présence à notre mariage. Nous sommes ravis de vous compter parmi nos invités !</p>
+        <p>Nous avons bien noté que vous serez tous les deux présents pour partager ce moment de bonheur avec nous 🥰</p>
+		<p>Nous avons hâte de vous retrouver le <strong>19 septembre</strong> pour célébrer ensemble ce moment unique.</p>
+        <p>À très bientôt !<br><strong>Camille & Patrick ❤️</strong></p>
+    </div>";
 }
 
 
+elseif ($presenceInvite == 'non' && $invitationCouple == 'oui' && $presenceConjoint == 'oui') {
+    $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+        <p>Bonjour <strong>$prenom</strong>,</p>
+        <p>Nous avons bien reçu ta réponse et nous sommes tristes que tu ne puisses pas être présent à notre mariage.</p>
+        <p>Nous aurons toutefois la joie d’accueillir ton/ta conjoint(e).</p>
+        <p>Nous espérons te revoir bientôt le <strong>19 septembre</strong> pour partager un beau moment ensemble.</p>
+        <p>Avec toute notre amitié,<br><strong>Camille & Patrick ❤️</strong></p>
+    </div>";
+
+
+} else {
+    $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
+        <p>Bonjour <strong>$prenom</strong>,</p>
+        <p>Merci pour ta réponse. Nous espérons te revoir très bientôt, même si tu ne peux pas être présent(e) ce jour-là.</p>
+        <p>Avec toute notre amitié,<br><strong>Camille & Patrick ❤️</strong></p>
+    </div>";
+}
+
+
+
     $mail->Body = $body;
+	$mail->AltBody = strip_tags(str_replace(['<br>', '</p>', '<p>'], ["\n", "\n", ""], $body));
+
     $mail->send();
 
     echo "Confirmation enregistrée et mail envoyé à l'invité.";

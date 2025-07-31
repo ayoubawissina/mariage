@@ -5,7 +5,8 @@ FROM php:8.2-apache
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
-    && docker-php-ext-install mysqli
+    libpq-dev \
+    && docker-php-ext-install mysqli pdo_pgsql
 
 # Étape 3 : Installe Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -21,5 +22,3 @@ RUN composer install --no-interaction --no-ansi --no-progress --prefer-dist
 
 # Étape 7 : Expose le port Apache
 EXPOSE 80
-
-

@@ -984,3 +984,12 @@ font-family: 'Traditional Arabic', serif;
 
 }
 
+.paypal-link {
+  font-weight: bold;
+  color: #0070ba;
+  text-decoration: none;
+}
+
+.paypal-link:hover {
+  text-decoration: underline;
+}

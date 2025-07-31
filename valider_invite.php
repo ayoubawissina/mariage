@@ -52,6 +52,8 @@ try {
 
 // Envoi du courriel de confirmation
 $mail = new PHPMailer(true);
+$mail->CharSet = 'UTF-8';
+
 
 try {
     $mail->isSMTP();

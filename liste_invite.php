@@ -20,9 +20,19 @@ function downloadFromGoogleDrive($driveFileName, $driveFolderId, $credentialsPat
     return $response->getBody()->getContents();
 }
 
+// Gérer les credentials comme dans valider_invite.php
+$tempPath = '/tmp/credentials.json';
+$credentialsJson = getenv('GOOGLE_CREDENTIALS_JSON');
+
+if (!$credentialsJson) {
+    die('Clé API Google manquante.');
+}
+
+file_put_contents($tempPath, $credentialsJson);
+
 
 $folderId = '1Uyqf39Ro-efKaA1Z48MYp3K7AZn3Bon5';
-$jsonData = downloadFromGoogleDrive('invites.json', $folderId, __DIR__ . '/credentials.json');
+$jsonData = downloadFromGoogleDrive('invites.json', $folderId, $tempPath);
 
 if ($jsonData) {
     $invites = json_decode($jsonData, true);

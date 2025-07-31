@@ -24,6 +24,17 @@ if ($invitationCouple === 'oui' && $confirmationConjoint === 'on') {
 
 // Insertion en base PostgreSQL
 try {
+    // Vérifie si l'e-mail existe déjà
+    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM public.invite WHERE email = :email");
+    $checkStmt->execute([':email' => $email]);
+    $count = $checkStmt->fetchColumn();
+
+    if ($count > 0) {
+        echo "Cet invité a déjà confirmé sa présence.";
+        exit;
+    }
+
+    // S'il n'existe pas, on insère
     $stmt = $conn->prepare("
         INSERT INTO public.invite (
             nom, prenom, email,
@@ -37,18 +48,19 @@ try {
     ");
 
     $stmt->execute([
-    ':nom' => $nom,
-    ':prenom' => $prenom,
-    ':email' => $email,
-    ':presenceInvite' => $presenceInvite,      // <-- ici
-    ':invitationCouple' => $invitationCouple,
-    ':presenceConjoint' => $presenceConjoint ?: null,
-    ':confirmationConjoint' => $invitationCouple === 'oui' ? $confirmationConjointBool : null
-]);
+        ':nom' => $nom,
+        ':prenom' => $prenom,
+        ':email' => $email,
+        ':presenceInvite' => $presenceInvite,
+        ':invitationCouple' => $invitationCouple,
+        ':presenceConjoint' => $presenceConjoint ?: null,
+        ':confirmationConjoint' => $invitationCouple === 'oui' ? $confirmationConjointBool : null
+    ]);
 
 } catch (PDOException $e) {
     die("Erreur en base de données : " . $e->getMessage());
 }
+
 
 // Envoi du courriel de confirmation
 $mail = new PHPMailer(true);

@@ -60,8 +60,13 @@ try {
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($invites as $invite): ?>
+        <?php
+        $num = 1;
+        foreach ($invites as $invite):
+          if (strtolower($invite['presence_invite']) !== 'oui') continue; // N'afficher que les invités présents
+        ?>
           <tr>
+            <td><?= $num++ ?></td>
             <td><?= htmlspecialchars($invite['prenom']) ?></td>
             <td><?= htmlspecialchars($invite['nom']) ?></td>
             <td><?= htmlspecialchars($invite['email']) ?></td>

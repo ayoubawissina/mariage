@@ -14,8 +14,13 @@ $presenceConjoint = $_GET['presenceConjoint'] ?? null;
 $confirmationConjoint = $_GET['confirmationConjoint'] ?? null;
 $presenceInvite = $_GET['presenceInvite'] ?? '';
 
-// Convertir le champ checkbox en booléen
-$confirmationConjointBool = ($confirmationConjoint === 'on') ? true : false;
+$confirmationConjoint = $_GET['confirmationConjoint'] ?? null;
+
+if ($invitationCouple === 'oui' && $confirmationConjoint === 'on') {
+    $confirmationConjointBool = true;
+} else {
+    $confirmationConjointBool = null;  // IMPORTANT : null, pas false ni ''
+}
 
 // Insertion en base PostgreSQL
 try {

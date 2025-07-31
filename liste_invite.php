@@ -2,8 +2,25 @@
 require 'connexion_db.php';
 
 try {
+    // Récupérer tous les invités
     $stmt = $conn->query("SELECT * FROM public.invite ORDER BY date_reponse DESC");
     $invites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calcul du nombre total de personnes confirmées
+    $totalConfirmes = 0;
+    foreach ($invites as $invite) {
+        if (strtolower($invite['presence_invite']) === 'oui') {
+            $totalConfirmes += 1;
+            if (
+                strtolower($invite['invitation_couple']) === 'oui' &&
+                isset($invite['presence_conjoint']) &&
+                strtolower($invite['presence_conjoint']) === 'oui'
+            ) {
+                $totalConfirmes += 1;
+            }
+        }
+    }
+
 } catch (PDOException $e) {
     die("Erreur : " . $e->getMessage());
 }
@@ -16,7 +33,8 @@ try {
   <title>Liste des invités</title>
   <style>
     body { font-family: Arial; padding: 30px; background-color: #fdf6f6; }
-    h1 { color: #800000; text-align: center; margin-bottom: 30px; }
+    h1 { color: #800000; text-align: center; margin-bottom: 10px; }
+    h2 { color: #444; text-align: center; margin-bottom: 30px; }
     table { border-collapse: collapse; width: 100%; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
     th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; }
     th { background-color: #800000; color: white; }
@@ -26,6 +44,7 @@ try {
 </head>
 <body>
   <h1>📋 Liste des invités confirmés</h1>
+  <h2>👥 Nombre total de personnes confirmées : <?= $totalConfirmes ?></h2>
 
   <?php if (count($invites) > 0): ?>
     <table>

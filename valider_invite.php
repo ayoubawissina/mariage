@@ -68,19 +68,20 @@ try {
     $mail->Subject = 'Confirmation de présence - Mariage de Patrick et Camille';
 
     // Message personnalisé
-    if ($presence == 'oui' && $invitationCouple == 'non') {
-        $body = "Bonjour $prenom, merci pour votre confirmation de présence à notre mariage ! Nous avons hâte de vous voir.";
-    } elseif ($presence == 'non' && $invitationCouple == 'non') {
-        $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir à notre mariage. Vous serez avec nous en pensée.";
-    } elseif ($presence == 'oui' && $invitationCouple == 'oui') {
-        $body = ($presenceConjoint == 'oui') ?
-            "Bonjour $prenom, merci pour votre confirmation ainsi que celle de votre conjoint. Nous avons hâte de vous voir tous les deux !" :
-            "Bonjour $prenom, merci pour votre confirmation. Nous avons noté que vous viendrez sans votre conjoint.";
-    } elseif ($presence == 'non' && $invitationCouple == 'oui') {
-        $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir avec votre conjoint. Merci pour votre réponse.";
-    } else {
-        $body = "Bonjour $prenom, merci pour votre réponse.";
-    }
+    if ($presenceInvite == 'oui' && $invitationCouple == 'non') {
+    $body = "Bonjour $prenom, merci pour votre confirmation de présence à notre mariage ! Nous avons hâte de vous voir.";
+} elseif ($presenceInvite == 'non' && $invitationCouple == 'non') {
+    $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir à notre mariage. Vous serez avec nous en pensée.";
+} elseif ($presenceInvite == 'oui' && $invitationCouple == 'oui') {
+    $body = ($presenceConjoint == 'oui') ?
+        "Bonjour $prenom, merci pour votre confirmation ainsi que celle de votre conjoint. Nous avons hâte de vous voir tous les deux !" :
+        "Bonjour $prenom, merci pour votre confirmation. Nous avons noté que vous viendrez sans votre conjoint.";
+} elseif ($presenceInvite == 'non' && $invitationCouple == 'oui') {
+    $body = "Bonjour $prenom, nous sommes désolés que vous ne puissiez pas venir avec votre conjoint. Merci pour votre réponse.";
+} else {
+    $body = "Bonjour $prenom, merci pour votre réponse.";
+}
+
 
     $mail->Body = $body;
     $mail->send();

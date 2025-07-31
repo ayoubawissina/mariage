@@ -12,7 +12,7 @@ $email = $_GET['email'] ?? '';
 $invitationCouple = $_GET['invitationCouple'] ?? '';
 $presenceConjoint = $_GET['presenceConjoint'] ?? null;
 $confirmationConjoint = $_GET['confirmationConjoint'] ?? null;
-$presence = $_GET['presence'] ?? '';
+$presenceInvite = $_GET['presenceInvite'] ?? '';
 
 // Convertir le champ checkbox en booléen
 $confirmationConjointBool = ($confirmationConjoint === 'on') ? true : false;
@@ -26,20 +26,21 @@ try {
             presence_conjoint, confirmation_conjoint
         ) VALUES (
             :nom, :prenom, :email,
-            :presence, :invitationCouple,
+            :presenceInvite, :invitationCouple,
             :presenceConjoint, :confirmationConjoint
         )
     ");
 
     $stmt->execute([
-        ':nom' => $nom,
-        ':prenom' => $prenom,
-        ':email' => $email,
-        ':presence' => $presence,
-        ':invitationCouple' => $invitationCouple,
-        ':presenceConjoint' => $presenceConjoint ?: null,
-        ':confirmationConjoint' => $invitationCouple === 'oui' ? $confirmationConjointBool : null
-    ]);
+    ':nom' => $nom,
+    ':prenom' => $prenom,
+    ':email' => $email,
+    ':presenceInvite' => $presenceInvite,      // <-- ici
+    ':invitationCouple' => $invitationCouple,
+    ':presenceConjoint' => $presenceConjoint ?: null,
+    ':confirmationConjoint' => $invitationCouple === 'oui' ? $confirmationConjointBool : null
+]);
+
 } catch (PDOException $e) {
     die("Erreur en base de données : " . $e->getMessage());
 }

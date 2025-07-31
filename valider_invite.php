@@ -127,7 +127,7 @@ elseif ($presenceInvite == 'non' && $invitationCouple == 'oui' && $presenceConjo
         <p>Bonjour <strong>$prenom</strong>,</p>
         <p>Nous avons bien reçu ta réponse et nous sommes tristes que tu ne puisses pas être présent à notre mariage.</p>
         <p>Nous aurons toutefois la joie d’accueillir ton/ta conjoint(e).</p>
-        <p>Nous espérons te revoir bientôt le <strong>19 septembre</strong> pour partager un beau moment ensemble.</p>
+        <p>Nous espérons accueillir ton/ta conjoint(e) le <strong>19 septembre</strong> pour partager un beau moment ensemble.</p>
         <p>Avec toute notre amitié,<br><strong>Camille & Patrick ❤️</strong></p>
     </div>";
 
@@ -135,7 +135,8 @@ elseif ($presenceInvite == 'non' && $invitationCouple == 'oui' && $presenceConjo
 } else {
     $body = "<div style='font-family: Arial, sans-serif; font-size: 16px; color: #333; line-height: 1.6;'>
         <p>Bonjour <strong>$prenom</strong>,</p>
-        <p>Merci pour ta réponse. Nous espérons te revoir très bientôt, même si tu ne peux pas être présent(e) ce jour-là.</p>
+        <p>Nous avons bien reçu ta réponse et nous sommes tristes que vous ne puissiez pas être parmi nous pour célébrer notre mariage.</p>
+		<p>merci d’avoir pris le temps de nous répondre.</p>
         <p>Avec toute notre amitié,<br><strong>Camille & Patrick ❤️</strong></p>
     </div>";
 }
